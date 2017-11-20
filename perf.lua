@@ -11,7 +11,7 @@ function activeram()
    local active, ramusg, res
    
    for line in io.lines("/proc/meminfo") do
-      for key , value in string.gmatch(line, "(%w+):\ +(%d+).+") do
+      for key , value in string.gmatch(line, "(%w+):%s+(%d+).+") do
 	 if key == "MemTotal" then memtot = tonumber(value)
 	 elseif key == "Active" then active = tonumber(value)
 	 end
